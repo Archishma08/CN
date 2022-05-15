@@ -1,0 +1,16 @@
+import java.net.Socket;
+import java.io.*;
+
+public class client{
+public static void main(String args[]){
+System.out.println("This is client");
+try{
+Socket client= new Socket("localhost",5003);
+PrintWriter pr= new PrintWriter(client getOutputStream());
+pr.println("HELLO");
+pr.flush();
+catch(Exception e){
+//TO DO : handle exception
+}
+}
+}
