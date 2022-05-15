@@ -1,0 +1,36 @@
+//CLIENT
+import java.io.*;
+import java.net.*;
+import java.lang.*;
+public class Chatc
+{
+public static void main(String args[])
+{
+try
+{
+BufferedReader in=new BufferedReader( new InputStreamReader(System.in));
+Socket s= new Socket("localhost",111);
+BufferedReader br = new BufferedReader( new InputStreamReader(s.getInputStream()));
+PrintWriter pw=new PrintWriter(s.getOutputStream());
+while(true)
+{
+System.out.println("client");
+String msg=in.readLine();
+pw.println(msg);
+pw.flush();
+String from = br.readLine();
+System.out.println("from server="+from);
+if(from.equals("quit"))
+{
+System.out.println("Disconnect");
+System.exit(0);
+}
+}
+}
+catch(IOException e)
+{
+System.out.println("ending");
+}
+}
+}
+
